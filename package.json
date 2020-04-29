@@ -4,8 +4,15 @@
   "description": "Blog list backend from Full Stack Open course",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build:ui": "rm -rf build && cd /home/rafael/FullStackOpen/part2/part2 && npm run build --prod && cp -r build /home/rafael/notes_backend",
+    "deploy": "git push heroku master",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
+    "logs:prod": "heroku logs --tail",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -24,6 +31,11 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.5.1",
     "nodemon": "^2.0.3"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
