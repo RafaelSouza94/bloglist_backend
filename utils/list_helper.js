@@ -13,6 +13,20 @@ const totalLikes = (blogs) => {
 }
 
 const favoriteBlog = (blogs) => {
+    if (blogs.length === 0){
+        return {}
+    }
+
+    const reducer = (largest, item) => {
+        if(item["likes"] > largest)
+            largest = item["likes"]
+        return largest
+    }
+
+    const mostLikes = blogs.reduce(reducer, 0)
+    const result = blogs.filter((blog) => blog.likes === mostLikes)
+
+    return result[0]
 
 }
 
