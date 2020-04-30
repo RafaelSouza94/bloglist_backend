@@ -50,4 +50,4 @@ const blogs = [
         "__v":0
 }]
 
-console.log(listHelper.favoriteBlog(blogs))
+console.log(listHelper.mostBlogs(blogs))

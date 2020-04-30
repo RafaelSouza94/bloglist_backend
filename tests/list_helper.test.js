@@ -94,3 +94,31 @@ describe('favorite blogs', () => {
         expect(result).toEqual(blogs[2])
     })
 })
+
+describe('author with', () => {
+    test('most blogs on empty list', () => {
+        const result = listHelper.mostBlogs({})
+        expect(result).toEqual({})
+    })
+
+    test('most blogs with actual list', () => {
+        const result = listHelper.mostBlogs(blogs)
+        expect(result).toEqual({  
+            "author": "Robert C. Martin",
+            "blogs": 3
+        })
+    })
+
+    test('most likes on empty list', () => {
+        const result = listHelper.mostLikes({})
+        expect(result).toEqual({})
+    })
+
+    test('most likes with actual list', () => {
+        const result = listHelper.mostLikes(blogs)
+        expect(result).toEqual({  
+            author: "Edsger W. Dijkstra",
+            likes: 17
+        })
+    })
+})
